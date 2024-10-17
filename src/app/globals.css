@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+#credential_picker_iframe {
+  z-index: 99999999 !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  /* -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important; */
+  -webkit-background-clip: text;
+  /* This is a bonus from here: https://github.com/nextui-org/nextui/issues/1346#issuecomment-1855635162*/
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+table {
+  border-collapse: collapse;
+  border: 1px solid rgb(0, 0, 0);
+
+}
+
+table tr {
+  border: 1px solid rgb(0, 0, 0);
+}
+
+table tr td {
+  border-right: 1px solid rgb(0, 0, 0);
+  padding: 10px;
+  color: var(--color-text);
+  font-size: 16px;
+  font-weight: 400;
+  text-align: justify;
+}
+
+.ReactCollapse--collapse {
+  transition: height 500ms;
+}
+
+/* Fix Keen Slider Layout Shift */
+.keen-slider__slide {
+  min-width: calc(100% + 0px);
+  max-width: calc(100% + 0px);
+  transform: translate3d(0, 0, 0);
+}
+
+.navigation-wrapper {
+  position: relative;
+}
+
+.dots {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  padding: 10px 0;
+  justify-content: center;
+}
+
+.dot {
+  border: none;
+  width: 10px;
+  height: 10px;
+  background: white;
+  border: 1px solid theme('colors.primary.700');
+  border-radius: 50%;
+  margin: 0 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.dot:focus {
+  outline: none;
+}
+
+.dot.active {
+  background: theme('colors.highlight.500');
+  border: 1px solid theme('colors.primary.700');
+}
+
+.arrow {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  fill: #fff;
+  cursor: pointer;
+}
+
+.arrow-circle {
+  transition: fill 0.2s ease; /* Smooth transition for color change */
+}
+
+.arrow-path {
+  transition: fill 0.2s ease; /* Smooth transition for color change */
+}
+
+.arrow-cardapio-left:hover circle, .arrow-cardapio-right:hover circle{
+  fill: rgb(242, 86, 0);
+}
+
+.arrow-cardapio-left:hover path, .arrow-cardapio-right:hover path{
+  fill: white;
+}
+
+.arrow-cardapio-left {
+  left: -45px;
+}
+
+.arrow-cardapio-right {
+  left: auto;
+  right: -45px;
+}
+
+@media (max-width: 640px) {
+  .arrow-cardapio-left {
+    left: -15px;
+  }
+
+  .arrow-cardapio-right {
+    left: auto;
+    right: -15px;
+  }
+}
+
+.arrow--left {
+  left: 60px;
+}
+
+.arrow--right {
+  left: auto;
+  right: 60px;
+}
+
+.arrow--disabled {
+  fill: rgba(255, 255, 255, 0.5);
+}
+
+.plk-category-icon-wrapper:hover .plk-category-icon {
+  filter: invert(100%) url(#plk-bg-overlay);
+  opacity: 1;
+}
+
+.plk-category-icon.active {
+  filter: invert(100%) url(#plk-bg-overlay);
+  opacity: 1;
+}
+
+.plk-active-indicator {
+  height: 4px;
+  bottom: -16%;
+  width: 100%;
+  background-color: rgb(255, 125, 0);
+  border-radius: 2px 2px 0px 0px;
+  border: 0px;
+  transform: scaleX(0);
+  transition: transform 0.5s;
+}
+
+.plk-active-indicator.active {
+  transform: scaleX(1);
+}
+
+.plk-button-restaurant svg path {
+  fill: rgb(189 189 189 / var(--tw-text-opacity));
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.plk-button-restaurant:hover svg path {
+  fill: rgb(242 86 0 / var(--tw-text-opacity));
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.plk-button-restaurant-active svg path {
+  fill: #ff7d00;
+}
