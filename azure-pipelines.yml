@@ -1,0 +1,45 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+# PLK Pipeline for static deploy
+
+trigger:
+  - develop
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '18.20.2'
+    displayName: 'Install Node.js'
+
+  - script: npm install
+    displayName: 'Install npm dependencies'
+
+  - script: npm run build:dev
+    displayName: 'Build Dev Environment'
+
+  - script: |
+      ls -la && pwd
+
+  - task: AWSCLI@1
+    inputs:
+      awsCredentials: 'AzDevops to S3'
+      regionName: 'sa-east-1'
+      awsCommand: 's3'
+      awsSubCommand: 'sync'
+      awsArguments: '$(system.DefaultWorkingDirectory)/dist s3://site-dev-popeyes/'
+    displayName: 'Sync to S3 Bucket'
+
+  - task: AWSCLI@1
+    inputs:
+      awsCredentials: 'AzDevops to S3'
+      regionName: 'sa-east-1'
+      awsCommand: 'cloudfront'
+      awsSubCommand: 'create-invalidation'
+      awsArguments: '--distribution-id E2XTQKY25JIKLC --paths "/*"'
+    displayName: 'CDN Purge'
