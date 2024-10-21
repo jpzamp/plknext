@@ -19,11 +19,7 @@ interface ProductProps {
 }
 
 async function getProduct(id: string): Promise<PlkProduct | null> {
-  const response = await api(`/listar-produtos/${id}`, {
-    next: {
-      revalidate: 60 * 60, // 1 hour
-    },
-  })
+  const response = await api(`/listar-produtos/${id}`, {})
 
   if (response.ok) {
     const product = await response.json()

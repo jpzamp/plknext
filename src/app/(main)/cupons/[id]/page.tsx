@@ -21,11 +21,7 @@ interface CouponProps {
 }
 
 async function getCoupon(id: string): Promise<PlkCupom | null> {
-  const response = await api(`/detalhes/cupom?id=${id}`, {
-    next: {
-      revalidate: 60 * 60, // 1 hour
-    },
-  })
+  const response = await api(`/detalhes/cupom?id=${id}`, {})
 
   if (response.ok) {
     const data = await response.json()

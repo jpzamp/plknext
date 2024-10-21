@@ -9,11 +9,7 @@ import { ImageResponse } from 'next/og'
 async function getProduct(id: string): Promise<PlkProduct | null> {
   const response = await api(
     `/listar-produtos/${id}`,
-    {
-      next: {
-        revalidate: 60 * 60, // 1 hour
-      },
-    },
+    {},
     'CMS',
   )
 
