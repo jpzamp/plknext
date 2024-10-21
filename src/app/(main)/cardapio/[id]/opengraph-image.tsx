@@ -4,7 +4,7 @@ import { PlkProduct } from '@/app/data/types/product'
 import { env } from '@/env'
 import { ImageResponse } from 'next/og'
 
-export const runtime = 'edge'
+//export const runtime = 'edge'
 
 async function getProduct(id: string): Promise<PlkProduct | null> {
   const response = await api(
