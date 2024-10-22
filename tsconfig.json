@@ -23,7 +23,7 @@
     ],
     "paths": {
       "@/*": ["./*"],
-      "@/components/*": ["components/*"],
+      "@/components/*": ["./src/components/*"],
       "@/public/*": ["./public/*"]
     }
   },
