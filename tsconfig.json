@@ -25,6 +25,21 @@
       "@/*": [
         "./src/*"
       ],
+      "@/components/*": [
+        "./src/components/*"
+      ],
+      "@/contexts/*": [
+        "./src/contexts/*"
+      ],
+      "@/data/*": [
+        "./src/data/*"
+      ],
+      "@/providers/*": [
+        "./src/providers/*"
+      ],
+      "@/utils/*": [
+        "./src/utils/*"
+      ],
       "@/public/*": ["./public/*"]
     }
   },
